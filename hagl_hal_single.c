@@ -48,37 +48,42 @@ valid.
 #include <hagl/backend.h>
 #include <hagl.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "mipi_display.h"
 
 static void
 put_pixel(void *self, int16_t x0, int16_t y0, hagl_color_t color)
 {
-    mipi_display_write_xy(x0, y0, (uint8_t *) &color);
+    hagl_backend_t *backend = *(hagl_backend_t**) self;
+    mipi_display_write_xy(backend, x0, y0, (uint8_t *) &color);
 }
 
 static void
 blit(void *self, int16_t x0, int16_t y0, hagl_bitmap_t *src)
 {
-    mipi_display_write_xywh(x0, y0, src->width, src->height, (uint8_t *) src->buffer);
+    hagl_backend_t *backend = *(hagl_backend_t**) self;
+    mipi_display_write_xywh(backend, x0, y0, src->width, src->height, (uint8_t *) src->buffer);
 }
 
 static void
 hline(void *self, int16_t x0, int16_t y0, uint16_t width, hagl_color_t color)
 {
-    mipi_display_fill_xywh(x0, y0, width, 1, &color);
+    hagl_backend_t *backend = *(hagl_backend_t**) self;
+    mipi_display_fill_xywh(backend, x0, y0, width, 1, &color);
 }
 
 static void
 vline(void *self, int16_t x0, int16_t y0, uint16_t height, hagl_color_t color)
 {
-    mipi_display_fill_xywh(x0, y0, 1, height, &color);
+    hagl_backend_t *backend = *(hagl_backend_t**) self;
+    mipi_display_fill_xywh(backend, x0, y0, 1, height, &color);
 }
 
 void
 hagl_hal_init(hagl_backend_t *backend)
 {
-    mipi_display_init();
+    mipi_display_init(backend);
 
     backend->width = MIPI_DISPLAY_WIDTH;
     backend->height = MIPI_DISPLAY_HEIGHT;

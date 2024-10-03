@@ -57,26 +57,11 @@ extern "C" {
 #ifndef MIPI_DISPLAY_SPI_CLOCK_SPEED_HZ
 #define MIPI_DISPLAY_SPI_CLOCK_SPEED_HZ     (62500000)
 #endif
-#ifndef MIPI_DISPLAY_SPI_PORT
-#define MIPI_DISPLAY_SPI_PORT       (spi1)
-#endif
-#ifndef MIPI_DISPLAY_PIN_CS
-#define MIPI_DISPLAY_PIN_CS         (9)
-#endif
-#ifndef MIPI_DISPLAY_PIN_DC
-#define MIPI_DISPLAY_PIN_DC         (8)
-#endif
 #ifndef MIPI_DISPLAY_PIN_RST
 #define MIPI_DISPLAY_PIN_RST        (12)
 #endif
 #ifndef MIPI_DISPLAY_PIN_BL
 #define MIPI_DISPLAY_PIN_BL         (13)
-#endif
-#ifndef MIPI_DISPLAY_PIN_CLK
-#define MIPI_DISPLAY_PIN_CLK        (10)
-#endif
-#ifndef MIPI_DISPLAY_PIN_MOSI
-#define MIPI_DISPLAY_PIN_MOSI       (11)
 #endif
 #ifndef MIPI_DISPLAY_PIN_MISO
 #define MIPI_DISPLAY_PIN_MISO       (-1)

@@ -43,12 +43,12 @@ extern "C" {
 
 #include "hagl_hal.h"
 
-void mipi_display_init();
-size_t mipi_display_write_xywh(uint16_t x1, uint16_t y1, uint16_t w, uint16_t h, uint8_t *buffer);
-size_t mipi_display_write_xy(uint16_t x1, uint16_t y1, uint8_t *buffer);
-size_t mipi_display_fill_xywh(uint16_t x1, uint16_t y1, uint16_t w, uint16_t h, void *color);
-void mipi_display_ioctl(uint8_t command, uint8_t *data, size_t size);
-void mipi_display_close();
+void mipi_display_init(hagl_backend_t *backend);
+size_t mipi_display_write_xywh(hagl_backend_t *backend,uint16_t x1, uint16_t y1, uint16_t w, uint16_t h, uint8_t *buffer);
+size_t mipi_display_write_xy(hagl_backend_t *backend,uint16_t x1, uint16_t y1, uint8_t *buffer);
+size_t mipi_display_fill_xywh(hagl_backend_t *backend,uint16_t x1, uint16_t y1, uint16_t w, uint16_t h, void *color);
+void mipi_display_ioctl(hagl_backend_t *backend,uint8_t command, uint8_t *data, size_t size);
+void mipi_display_close(hagl_backend_t *backend);
 
 #ifdef __cplusplus
 }
